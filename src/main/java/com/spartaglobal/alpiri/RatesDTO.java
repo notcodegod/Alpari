@@ -7,6 +7,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RatesDTO {
 
@@ -37,5 +39,14 @@ public class RatesDTO {
 
     }
 
+    public String getDatefromTimestamp(){
+        long timestamp = (long) fullRatesFile.get("timestamp");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(new Date (timestamp * 1000L));// the date instantiation converts it to milli seconds the sdf will convert to actual date
+    }
 
+    public String getDate(){
+
+        return (String) fullRatesFile.get("date");
+    }
 }

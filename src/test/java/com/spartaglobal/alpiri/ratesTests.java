@@ -7,15 +7,24 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ratesTests {
-     RatesDTO rates;
+    public static RatesDTO rates;
 
-    @Before
-    public void setup(){
+    @BeforeClass
+    public static void setup(){
         rates = new RatesDTO("resources/rates.json");
+
     }
 
     @Test
     public void testSuccessResponse(){
         Assert.assertTrue(rates.getSuccessValues());
     }
+@Test
+    public void testTimeStampMatchesDate()
+    {
+        //Assert.assertEquals(rates.getDatefromTimestamp(), rates.getDate());
+        Assert.assertTrue(rates.getDatefromTimestamp().contentEquals(rates.getDate()));
+    }
+
+
 }
